@@ -296,8 +296,15 @@ source myenv/bin/activate
 Once the virtual environment is activated, you can use `pip` to install the required dependencies. 
 
 ```shell
-pip install -r requirements.txt
+pip install -r requirements.txt --force-reinstall
 ```
+
+###### Upgrade deps of llama and pydantic 
+
+```shell
+pip install --upgrade llama-parse llama-index pydantic
+```
+
 
 ##### Create SQLite Database
 
