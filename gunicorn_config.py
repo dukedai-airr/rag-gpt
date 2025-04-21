@@ -5,3 +5,4 @@ workers = 3
 accesslog = "access.log"  # Access logs file
 errorlog = "-"    # Disable gunicorn access logs
 loglevel = "info"
+timeout = 120
