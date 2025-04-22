@@ -117,14 +117,14 @@ def check_env_variables():
     MIN_RELEVANCE_SCORE = os.getenv('MIN_RELEVANCE_SCORE')
     try:
         min_relevance_score = float(MIN_RELEVANCE_SCORE)
-        if min_relevance_score < 0.3 or min_relevance_score > 0.7:
+        if min_relevance_score < 0.3 or min_relevance_score > 0.9:
             logger.error(
-                f"MIN_RELEVANCE_SCORE: {MIN_RELEVANCE_SCORE} is illegal! It should be a float number between [0.3~0.7]"
+                f"MIN_RELEVANCE_SCORE: {MIN_RELEVANCE_SCORE} is illegal! It should be a float number between [0.3~0.9]"
             )
             sys.exit(-1)
     except Exception as e:
         logger.error(
-            f"MIN_RELEVANCE_SCORE: {MIN_RELEVANCE_SCORE} is illegal! It should be a float number between [0.3~0.7]"
+            f"MIN_RELEVANCE_SCORE: {MIN_RELEVANCE_SCORE} is illegal! It should be a float number between [0.3~0.9]"
         )
         sys.exit(-1)
 

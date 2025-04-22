@@ -44,6 +44,7 @@ async def write_file_async(file_path: str, content: bytes) -> None:
 async def parse_file_content_async(file_path: str, file_extension: str,
                                    file_md5: str,
                                    id_url_info: Dict[str, Any]) -> None:
+    # if USE_LLAMA_PARSE is 0(false), native parser will be used.
     file_loader_obj = None
     if file_extension == ".csv":
         file_loader_obj = AsyncCsvLoader(file_path=file_path)
@@ -294,6 +295,7 @@ def submit_local_file_list():
                 "url": row["url"]
             }
 
+        # add_local_file_info do the embedding
         Thread(target=add_local_file_info,
                args=(file_data, id_url_info, MAX_CONCURRENT_WRITES)).start()
 

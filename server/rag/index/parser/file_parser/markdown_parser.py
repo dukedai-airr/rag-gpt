@@ -78,7 +78,7 @@ class AsyncTextParser:
             f"[FILE_CONTENT] add_content begin, doc_id: {doc_id}, begin_time: {begin_time}"
         )
         await self.update_doc_status(doc_id, LOCAL_FILE_PARSING)
-
+        # during parsing file, content has been converted into markdown.
         text_splitter_obj = MarkdownTextSplitter(
             chunk_size=self.max_chunk_length, chunk_overlap=self.chunk_overlap)
         chunk_text_vec = text_splitter_obj.split_text(content)
