@@ -45,6 +45,7 @@ async def parse_file_content_async(file_path: str, file_extension: str,
                                    file_md5: str,
                                    id_url_info: Dict[str, Any]) -> None:
     # if USE_LLAMA_PARSE is 0(false), native parser will be used.
+    # if USE_LLAMA_PARSE is 1(true), need LLAMA_CLOUD_API_KEY to enable llama parser.
     file_loader_obj = None
     if file_extension == ".csv":
         file_loader_obj = AsyncCsvLoader(file_path=file_path)
