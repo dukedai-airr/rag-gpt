@@ -37,7 +37,7 @@ def get_user_query_history(user_id: str, is_streaming: bool) -> List[Any]:
         history_key = f"open_kf:query_history:{user_id}:stream"
     else:
         history_key = f"open_kf:query_history:{user_id}"
-    history_items = diskcache_client.get_list(history_key)[::-1]
+    history_items = diskcache_client.get_list(history_key)[::2]
     history = [json.loads(item) for item in history_items]
     return history
 
@@ -182,6 +182,10 @@ def filter_documents(
     for doc, score in results:
         if score >= min_relevance_score:
             filter_results.append((doc, score))
+        else:
+            logger.warning(
+                f"For the query: '{doc}', the chroma_score: '{score}' is less than the min_relevance_score: '{min_relevance_score}', so it is filtered out!"
+            ) 
     return filter_results
 
 
